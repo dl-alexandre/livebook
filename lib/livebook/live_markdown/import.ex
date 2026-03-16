@@ -557,6 +557,9 @@ defmodule Livebook.LiveMarkdown.Import do
       {"continue_on_error", continue_on_error}, attrs ->
         Map.put(attrs, :continue_on_error, continue_on_error)
 
+      {"output_size", output_size}, attrs when output_size in ["full", "wide"] ->
+        Map.put(attrs, :output_size, String.to_atom(output_size))
+
       _entry, attrs ->
         attrs
     end)
