@@ -56,6 +56,11 @@ server in solely client-side operations.
     @apply invisible;
   }
 
+  [data-el-cell-body-root],
+  [data-el-editor-box] {
+    @apply w-full mx-auto max-w-default;
+  }
+
   [data-el-cell][data-js-hover] [data-el-cell-focus-indicator] {
     @apply bg-blue-200;
   }
@@ -327,21 +332,36 @@ server in solely client-side operations.
 }
 
 [data-el-notebook] {
-  /* Outputs (both session and app) */
+  /* Output size (both session and app) */
 
-  [data-el-cell][data-js-amplified] {
-    [data-el-amplify-outputs-button] > button {
-      @apply bg-gray-100 text-gray-900;
-    }
-
-    [data-el-outputs-container] {
-      @apply bg-white m-0 py-16;
-
-      width: 90vw;
-      position: relative;
-      left: calc(-45vw + 50%);
+  [data-output-size="default"] {
+    > [data-el-output],
+    [data-el-cell-body],
+    [data-el-outputs-container],
+    [data-el-markdown-container] {
+      @apply w-full mx-auto max-w-default;
     }
   }
+
+  [data-output-size="wide"] {
+    > [data-el-output],
+    [data-el-cell-body],
+    [data-el-outputs-container],
+    [data-el-markdown-container] {
+      @apply w-full mx-auto max-w-wide;
+    }
+  }
+
+  [data-output-size="full"] {
+    > [data-el-output],
+    [data-el-cell-body],
+    [data-el-outputs-container],
+    [data-el-markdown-container] {
+      @apply w-full mx-auto max-w-full;
+    }
+  }
+
+  /* Outputs (both session and app) */
 
   [data-el-output][data-border] {
     @apply p-4 border border-t-0 border-gray-200 divide-y divide-gray-200;
